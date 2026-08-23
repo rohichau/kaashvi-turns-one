@@ -36,60 +36,76 @@
   setInterval(updateCountdown, 1000);
 
   const openBtn = el("openRsvp");
-  const dialog = el("rsvpDialog");
-  const closeBtn = el("closeRsvp");
-  const dialogFrame = el("dialogFrame");
-  const formWrap = el("formWrap");
-  const pageFrame = el("rsvpFrame");
-  const setupNote = el("setupNote");
+  const panel = el("rsvpPanel");
+  const form = el("rsvpForm");
+  const thanks = el("rsvpThanks");
+  const statusEl = el("formStatus");
+  const submitBtn = el("submitRsvp");
 
-  const rawUrl = (cfg.googleFormUrl || "").trim();
-
-  function normalizedFormUrl(url) {
-    if (!url) return "";
-    if (url.includes("embedded=true")) return url;
-    if (url.includes("/viewform")) {
-      const separator = url.includes("?") ? "&" : "?";
-      return url + separator + "embedded=true";
-    }
-    return url;
-  }
-
-  const formUrl = normalizedFormUrl(rawUrl);
-
-  function loadFormFrame(frame) {
-    if (frame && formUrl && !frame.src) {
-      frame.src = formUrl;
-    }
-  }
-
-  function openInlineForm() {
-    formWrap.hidden = false;
-    loadFormFrame(pageFrame);
-    formWrap.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  const endpoint = (cfg.rsvpEndpoint || "").trim();
 
   openBtn?.addEventListener("click", () => {
-    if (!formUrl) {
-      setupNote.hidden = false;
-      setupNote.textContent =
-        "RSVP is almost ready — connect the Google Form in config.js before sharing the website.";
+    if (!panel) return;
+    panel.hidden = false;
+    openBtn.setAttribute("aria-expanded", "true");
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+    el("guestName")?.focus();
+  });
+
+  function setStatus(message, isError) {
+    if (!statusEl) return;
+    statusEl.hidden = !message;
+    statusEl.textContent = message || "";
+    statusEl.classList.toggle("is-error", Boolean(isError));
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!endpoint) {
+      setStatus(
+        "RSVP is almost ready — add your Google Apps Script URL in config.js.",
+        true
+      );
       return;
     }
 
-    setupNote.hidden = true;
+    if (!form.reportValidity()) return;
 
-    if (dialog && typeof dialog.showModal === "function") {
-      loadFormFrame(dialogFrame);
-      dialog.showModal();
-    } else {
-      openInlineForm();
+    const data = new FormData(form);
+    const payload = {
+      name: data.get("name")?.toString().trim() || "",
+      attending: data.get("attending")?.toString() || "",
+      partySize: data.get("partySize")?.toString() || "",
+      message: data.get("message")?.toString().trim() || ""
+    };
+
+    submitBtn.disabled = true;
+    setStatus("Sending your RSVP…");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        // text/plain avoids a CORS preflight; Apps Script still parses JSON.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.error || "Request failed");
+      }
+
+      form.hidden = true;
+      if (thanks) thanks.hidden = false;
+      setStatus("");
+    } catch {
+      setStatus(
+        "Something went wrong. Please check your connection and try again.",
+        true
+      );
+      submitBtn.disabled = false;
     }
-  });
-
-  closeBtn?.addEventListener("click", () => dialog?.close());
-
-  dialog?.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
   });
 })();

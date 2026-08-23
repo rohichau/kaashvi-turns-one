@@ -371,18 +371,125 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: #916b75 !important;
 }
 
-.form-wrap {
+.rsvp-panel {
   margin-top: 26px;
-  border-radius: 24px;
-  overflow: hidden;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(116, 81, 142, .13);
   box-shadow: var(--shadow);
-  background: white;
+  padding: clamp(28px, 5vw, 44px);
+  animation: rsvpReveal .45s ease;
 }
 
-.form-wrap iframe {
+@keyframes rsvpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 22px;
+  max-width: 560px;
+}
+
+.rsvp-form .field {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.rsvp-form label,
+.rsvp-form legend {
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.rsvp-form legend {
+  margin-bottom: 2px;
+}
+
+.rsvp-form .optional {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.rsvp-form input[type="text"],
+.rsvp-form textarea {
   width: 100%;
-  height: 850px;
-  display: block;
+  border: 1px solid rgba(116, 81, 142, .22);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.rsvp-form input[type="text"]:focus,
+.rsvp-form textarea:focus {
+  border-color: var(--lavender-deep);
+  box-shadow: 0 0 0 4px rgba(183, 154, 215, .25);
+}
+
+.rsvp-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.rsvp-form .choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(116, 81, 142, .14);
+  background: rgba(249, 237, 242, .35);
+  cursor: pointer;
+}
+
+.rsvp-form .choice:has(input:checked) {
+  border-color: rgba(116, 81, 142, .45);
+  background: rgba(183, 154, 215, .18);
+}
+
+.rsvp-form .choice input {
+  margin-top: 3px;
+  accent-color: var(--lavender-deep);
+}
+
+.form-status {
+  margin: 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
+
+.form-status.is-error {
+  color: #9b3d52;
+}
+
+.rsvp-thanks h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 0 0 8px;
+  color: var(--lavender-deep);
+}
+
+.rsvp-thanks p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 40ch;
 }
 
 .venue {
@@ -444,48 +551,6 @@ footer {
 }
 
 footer p:last-child { opacity: .92; }
-
-.rsvp-dialog {
-  width: min(760px, calc(100% - 22px));
-  max-height: 92vh;
-  padding: 0;
-  border: 0;
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: 0 24px 100px rgba(40, 25, 51, .35);
-}
-
-.rsvp-dialog::backdrop {
-  background: rgba(42,28,51,.68);
-  backdrop-filter: blur(6px);
-}
-
-.dialog-inner {
-  background: white;
-  padding: 28px 24px 20px;
-}
-
-.dialog-inner h2 { margin-bottom: 18px; }
-
-.dialog-inner iframe {
-  width: 100%;
-  height: min(72vh, 760px);
-}
-
-.dialog-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 4;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 0;
-  background: rgba(255,255,255,.93);
-  box-shadow: 0 5px 18px rgba(0,0,0,.13);
-  font-size: 1.6rem;
-  cursor: pointer;
-}
 
 @media (max-width: 760px) {
   .section { padding: 62px 0; }

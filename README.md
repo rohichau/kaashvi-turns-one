@@ -15,68 +15,34 @@ It uses only the four illustrated/storybook images you provided.
 
 ---
 
-## 1. Connect the RSVP form
+## 1. Connect RSVP (Google Sheet via Apps Script)
 
-The website is already prepared to embed a free Google Form.
+GitHub Pages is static hosting — it cannot store RSVPs by itself.
+This site posts to a free Google Apps Script web app that appends rows to your Google Sheet.
 
-### Create the form
+### One-time setup
 
-Go to Google Forms and make a blank form.
-
-Suggested fields:
-
-1. **Guest / Family Name** — Short answer — Required
-2. **Will you be joining us?** — Multiple choice:
-   - Yes, we'd love to!
-   - Sorry, we can't make it
-3. **Number of adults** — Short answer
-4. **Number of children** — Short answer
-5. **Phone number** — Short answer, optional
-6. **A little message for Kaashvi** — Paragraph, optional
-
-### Connect it to a Google Sheet
-
-In Google Forms:
-
-**Responses → Link to Sheets**
-
-Every RSVP will then appear in a spreadsheet automatically.
-
-### Put the form into this website
-
-In Google Forms:
-
-**Send → `<>` Embed**
-
-You will see code similar to:
-
-```html
-<iframe src="https://docs.google.com/forms/d/e/ABC123/viewform?embedded=true">
-```
-
-Copy **only the URL inside `src="..."`**.
-
-Open:
+1. Create a Google Sheet (e.g. **Kaashvi Birthday RSVPs**).
+2. In the sheet: **Extensions → Apps Script**
+3. Paste the contents of:
 
 ```text
-config.js
+rsvp-apps-script/Code.gs
 ```
 
-Change:
+4. **Deploy → New deployment → Web app**
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Copy the Web app URL.
+6. Open `config.js` and set:
 
 ```js
-googleFormUrl: "",
+rsvpEndpoint: "PASTE_WEB_APP_URL_HERE",
 ```
 
-to:
+7. Refresh the site and submit a test RSVP — a new row should appear in the Sheet.
 
-```js
-googleFormUrl: "YOUR_GOOGLE_FORM_URL_HERE",
-```
-
-Save the file.
-
-That is the only code you need to edit for RSVP.
+That is the only config you need for RSVP.
 
 ---
 
@@ -191,13 +157,15 @@ Most guest-facing text is in:
 index.html
 ```
 
-## Want to change the RSVP link?
+## Want to change the RSVP destination?
 
 Only edit:
 
 ```text
 config.js
 ```
+
+Paste your Apps Script Web App URL into `rsvpEndpoint`.
 
 ## Want to change the date used by the countdown?
 
@@ -217,4 +185,4 @@ Built as a plain HTML/CSS/JavaScript site, so there are:
 - no paid framework
 - no API charges
 
-GitHub Pages hosts the invitation, while Google Forms + Google Sheets handle RSVP responses for free.
+GitHub Pages hosts the invitation. RSVPs are stored in a free Google Sheet via Google Apps Script.

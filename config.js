@@ -1,18 +1,18 @@
 /*
   KAASHVI BIRTHDAY SITE — QUICK CONFIG
 
-  1) Create your free Google Form.
-  2) Click Send → <> Embed.
-  3) Copy only the URL inside src="...".
-  4) Paste it below between the quotes.
+  GitHub Pages cannot store RSVPs by itself (static hosting only).
+  Use a free Google Sheet + Apps Script endpoint instead:
 
-  Example:
-  googleFormUrl:
-  "https://docs.google.com/forms/d/e/1FAIpQLSc....../viewform?embedded=true"
+  1) Open rsvp-apps-script/Code.gs and follow the setup comments.
+  2) Paste the deployed Web App URL below.
 */
 
 window.KAASHVI_SITE_CONFIG = {
-  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSex_0N9BX8_onTQibXCgb9dCer9w34jn5Rws34hV_mc_R39Rg/viewform?usp=dialog",
+  // Paste your Google Apps Script Web App URL here after deploying.
+  // Example: "https://script.google.com/macros/s/AKfycb.../exec"
+  // AKfycbykyQ9zjJ4-yUgra_EbTOpPMKlCpFKID2mutxA7QmY-o6XCCeFOrj02ViaXHpjdrUUn
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbykyQ9zjJ4-yUgra_EbTOpPMKlCpFKID2mutxA7QmY-o6XCCeFOrj02ViaXHpjdrUUn/exec",
 
   // Event date/time used for the countdown.
   // 12:30 PM India Standard Time on 6 Nov 2026.

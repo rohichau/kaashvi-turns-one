@@ -138,13 +138,9 @@
             Please RSVP so we can save a little royal seat for you.
           </p>
 
-          <button class="btn btn-primary" id="openRsvp" type="button">
+          <button class="btn btn-primary" id="openRsvp" type="button" aria-expanded="false" aria-controls="rsvpPanel">
             RSVP now
           </button>
-
-          <p class="setup-note" id="setupNote" hidden>
-            RSVP form has not been connected yet.
-          </p>
         </div>
 
         <div class="rsvp-art">
@@ -152,17 +148,61 @@
         </div>
       </div>
 
-      <div class="form-wrap" id="formWrap" hidden>
-        <iframe
-          id="rsvpFrame"
-          title="RSVP form"
-          loading="lazy"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-        >
-          Loading…
-        </iframe>
+      <div class="rsvp-panel" id="rsvpPanel" hidden>
+        <form class="rsvp-form" id="rsvpForm" novalidate>
+          <div class="field">
+            <label for="guestName">Please mention your name</label>
+            <input id="guestName" name="name" type="text" autocomplete="name" required placeholder="Your full name" />
+          </div>
+
+          <fieldset class="field">
+            <legend>Would you be able to attend on 6th Nov, 12:30 pm onwards?</legend>
+            <label class="choice">
+              <input type="radio" name="attending" value="Yes, I'll be there" required />
+              <span>Yes, I'll be there</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="attending" value="Sorry, can't make it" />
+              <span>Sorry, can't make it</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>How many people will be coming with you?</legend>
+            <label class="choice">
+              <input type="radio" name="partySize" value="Me + 1" required />
+              <span>Me + 1</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="partySize" value="Me + 2" />
+              <span>Me + 2</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="partySize" value="Me + 3" />
+              <span>Me + 3</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="partySize" value="I will not be able to attend" />
+              <span>I will not be able to attend</span>
+            </label>
+          </fieldset>
+
+          <div class="field">
+            <label for="guestMessage">Comments and/or questions <span class="optional">(optional)</span></label>
+            <textarea id="guestMessage" name="message" rows="4" placeholder="A little note for Kaashvi…"></textarea>
+          </div>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+
+          <button class="btn btn-primary" id="submitRsvp" type="submit">
+            Send RSVP
+          </button>
+        </form>
+
+        <div class="rsvp-thanks" id="rsvpThanks" hidden>
+          <h3>Thank you!</h3>
+          <p>Your RSVP has been received. We can't wait to celebrate with you.</p>
+        </div>
       </div>
     </section>
 
@@ -195,20 +235,5 @@
       <p>With love, Kaashvi & family ♥</p>
     </div>
   </footer>
-
-  <dialog id="rsvpDialog" class="rsvp-dialog">
-    <button id="closeRsvp" class="dialog-close" type="button" aria-label="Close RSVP form">×</button>
-    <div class="dialog-inner">
-      <span class="mini-label">RSVP</span>
-      <h2>Kaashvi turns one ✨</h2>
-      <iframe
-        id="dialogFrame"
-        title="Kaashvi birthday RSVP form"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-      ></iframe>
-    </div>
-  </dialog>
 </body>
 </html>

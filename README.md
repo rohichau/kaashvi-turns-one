@@ -1,17 +1,19 @@
-# Kaashvi Turns One — Free Birthday Invitation Website
+# Birthday Invitation Website — GitHub Pages Template
 
-This folder is a complete **GitHub Pages–ready website** for Kaashvi's first birthday.
+This folder is a complete **GitHub Pages–ready website** for a first birthday invitation.
 
-It uses only the four illustrated/storybook images you provided.
+It uses four illustrated/storybook images in the `assets/` folder.
 
-## Event details already included
+## Event details to customize
 
-- **Kaashvi**
-- **6th November**
-- **12:30 PM onwards**
-- **Taj Usha Kiran Palace, Gwalior**
-- Princess / fairytale theme
-- Countdown to **6 November 2026, 12:30 PM IST**
+Update these in `index.html` and `config.js` before sharing:
+
+- **Child's name** — e.g. `[Child Name]`
+- **Event date** — e.g. `[Day Month]`
+- **Event time** — e.g. `[Time] onwards`
+- **Venue** — e.g. `[Venue Name, City]`
+- **Theme** — e.g. princess / fairytale (optional)
+- **Countdown** — set `eventDateTime` in `config.js` (ISO format with timezone)
 
 ---
 
@@ -22,7 +24,7 @@ This site posts to a free Google Apps Script web app that appends rows to your G
 
 ### One-time setup
 
-1. Create a Google Sheet (e.g. **Kaashvi Birthday RSVPs**).
+1. Create a Google Sheet (e.g. **Birthday RSVPs**).
 2. In the sheet: **Extensions → Apps Script**
 3. Paste the contents of:
 
@@ -46,7 +48,7 @@ That is the only config you need for RSVP.
 
 ---
 
-# 2. Put the website on GitHub Pages for ₹0
+# 2. Put the website on GitHub Pages for free
 
 ## Create a GitHub account
 
@@ -61,7 +63,7 @@ Click:
 Repository name suggestion:
 
 ```text
-kaashvi-turns-one
+birthday-invitation
 ```
 
 Choose:
@@ -84,6 +86,7 @@ style.css
 script.js
 config.js
 assets/
+rsvp-apps-script/
 ```
 
 Make sure `index.html` is at the top level of the repository, not inside another folder.
@@ -111,7 +114,7 @@ GitHub will publish the website.
 Your URL will normally look like:
 
 ```text
-https://YOUR-GITHUB-USERNAME.github.io/kaashvi-turns-one/
+https://YOUR-GITHUB-USERNAME.github.io/birthday-invitation/
 ```
 
 It can take a minute or two for the first deployment.
@@ -120,14 +123,14 @@ It can take a minute or two for the first deployment.
 
 # 3. Share it on WhatsApp
 
-Example:
+Example (replace placeholders with your details):
 
-> 👑 Our little princess Kaashvi is turning ONE! ✨  
-> We would love for you to celebrate her special day with us.  
+> 👑 Our little princess [Child Name] is turning ONE! ✨  
+> We would love for you to celebrate with us.  
 >
-> 📅 6th November  
-> 🕧 12:30 PM onwards  
-> 📍 Taj Usha Kiran Palace, Gwalior  
+> 📅 [Event date]  
+> 🕧 [Event time]  
+> 📍 [Venue, City]  
 >
 > Invitation & RSVP:  
 > YOUR-GITHUB-PAGES-LINK
@@ -137,16 +140,18 @@ Example:
 # Files
 
 ```text
-kaashvi_birthday_site/
+birthday-invitation/
 ├── index.html
 ├── style.css
 ├── script.js
 ├── config.js
+├── rsvp-apps-script/
+│   └── Code.gs
 └── assets/
-    ├── kaashvi-garden.png
-    ├── kaashvi-forest.png
-    ├── kaashvi-princess.png
-    └── kaashvi-sky.png
+    ├── illustration-1.png
+    ├── illustration-2.png
+    ├── illustration-3.png
+    └── illustration-4.png
 ```
 
 ## Want to change text?
@@ -172,8 +177,10 @@ Paste your Apps Script Web App URL into `rsvpEndpoint`.
 In `config.js` change:
 
 ```js
-eventDateTime: "2026-11-06T12:30:00+05:30"
+eventDateTime: "YYYY-MM-DDTHH:mm:ss+05:30"
 ```
+
+Use your event date, time, and timezone offset.
 
 ---
 

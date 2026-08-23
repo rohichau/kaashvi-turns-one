@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#eadcf6" />
+  <meta name="description" content="You're invited to Kaashvi's first birthday celebration at Taj Usha Kiran Palace, Gwalior." />
+  <title>Kaashvi Turns One ✨</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="config.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-art">
+      <img src="assets/kaashvi-princess.png" alt="Illustration of Kaashvi at her birthday celebration" />
+      <div class="hero-fade"></div>
+    </div>
+
+    <div class="hero-content shell">
+      <div class="eyebrow">✦ YOU'RE INVITED ✦</div>
+      <div class="tiara" aria-hidden="true">♕</div>
+      <h1><span>Kaashvi</span> turns <strong>ONE</strong></h1>
+      <p class="subtitle">A magical first birthday celebration</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#rsvp">RSVP</a>
+        <a class="btn btn-glass" href="#details">View details</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro section shell">
+      <p class="tiny-crown">♕</p>
+      <h2>Once upon a time…</h2>
+      <p>
+        A tiny princess arrived and filled our world with giggles, wonder and a little bit of magic.
+        Now <strong>Kaashvi is turning one</strong>, and we would love for you to celebrate this beautiful milestone with us.
+      </p>
+      <div class="ornament">✦ ❀ ✦</div>
+    </section>
+
+    <section id="details" class="details section shell">
+      <div class="section-heading">
+        <span>THE ROYAL INVITATION</span>
+        <h2>Save the date</h2>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <div class="icon">📅</div>
+          <span>Date</span>
+          <strong>6th November</strong>
+        </article>
+
+        <article class="detail-card">
+          <div class="icon">🕧</div>
+          <span>Time</span>
+          <strong>12:30 PM onwards</strong>
+        </article>
+
+        <article class="detail-card">
+          <div class="icon">📍</div>
+          <span>Venue</span>
+          <strong>Taj Usha Kiran Palace</strong>
+          <small>Gwalior</small>
+        </article>
+      </div>
+
+      <a
+        class="btn btn-outline map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Taj+Usha+Kiran+Palace+Gwalior"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open in Google Maps ↗
+      </a>
+    </section>
+
+    <section class="storybook section">
+      <div class="shell">
+        <div class="section-heading">
+          <span>A LITTLE FAIRYTALE</span>
+          <h2>Kaashvi's magical world</h2>
+        </div>
+
+        <div class="story-grid">
+          <figure class="story-card tall">
+            <img src="assets/kaashvi-garden.png" alt="Storybook illustration of Kaashvi in a garden" loading="lazy" />
+            <figcaption>Where every little moment becomes a memory.</figcaption>
+          </figure>
+
+          <figure class="story-card">
+            <img src="assets/kaashvi-forest.png" alt="Storybook illustration of Kaashvi in an enchanted forest" loading="lazy" />
+            <figcaption>An enchanted adventure is about to begin.</figcaption>
+          </figure>
+
+          <figure class="story-card">
+            <img src="assets/kaashvi-sky.png" alt="Storybook illustration of Kaashvi in a magical night sky" loading="lazy" />
+            <figcaption>One whole year of love, laughter and wonder.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown section">
+      <div class="shell countdown-inner">
+        <div class="section-heading light">
+          <span>THE MAGIC BEGINS IN</span>
+          <h2>Counting down to Kaashvi's big day</h2>
+        </div>
+
+        <div class="countdown-grid" id="countdown">
+          <div><strong id="days">--</strong><span>Days</span></div>
+          <div><strong id="hours">--</strong><span>Hours</span></div>
+          <div><strong id="minutes">--</strong><span>Minutes</span></div>
+          <div><strong id="seconds">--</strong><span>Seconds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rsvp section shell">
+      <div class="rsvp-card">
+        <div class="rsvp-copy">
+          <span class="mini-label">YOUR PRESENCE IS OUR PRESENT</span>
+          <h2>Will you join us?</h2>
+          <p>
+            We would be delighted to celebrate Kaashvi's first birthday with you.
+            Please RSVP so we can save a little royal seat for you.
+          </p>
+
+          <button class="btn btn-primary" id="openRsvp" type="button">
+            RSVP now
+          </button>
+
+          <p class="setup-note" id="setupNote" hidden>
+            RSVP form has not been connected yet.
+          </p>
+        </div>
+
+        <div class="rsvp-art">
+          <img src="assets/kaashvi-garden.png" alt="" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="form-wrap" id="formWrap" hidden>
+        <iframe
+          id="rsvpFrame"
+          title="RSVP form"
+          loading="lazy"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        >
+          Loading…
+        </iframe>
+      </div>
+    </section>
+
+    <section class="venue section">
+      <div class="shell venue-card">
+        <div>
+          <span class="mini-label">OUR CELEBRATION VENUE</span>
+          <h2>Taj Usha Kiran Palace, Gwalior</h2>
+          <p>
+            A royal setting for our little princess's very first birthday.
+          </p>
+          <a
+            class="btn btn-outline"
+            href="https://www.google.com/maps/search/?api=1&query=Taj+Usha+Kiran+Palace+Gwalior"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Get directions ↗
+          </a>
+        </div>
+        <div class="venue-emblem" aria-hidden="true">♔</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="footer-crown">♕</div>
+      <p class="footer-script">We can't wait to celebrate with you!</p>
+      <p>With love, Kaashvi & family ♥</p>
+    </div>
+  </footer>
+
+  <dialog id="rsvpDialog" class="rsvp-dialog">
+    <button id="closeRsvp" class="dialog-close" type="button" aria-label="Close RSVP form">×</button>
+    <div class="dialog-inner">
+      <span class="mini-label">RSVP</span>
+      <h2>Kaashvi turns one ✨</h2>
+      <iframe
+        id="dialogFrame"
+        title="Kaashvi birthday RSVP form"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      ></iframe>
+    </div>
+  </dialog>
+</body>
+</html>

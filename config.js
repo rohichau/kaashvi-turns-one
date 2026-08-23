@@ -12,7 +12,7 @@
 */
 
 window.KAASHVI_SITE_CONFIG = {
-  googleFormUrl: "",
+  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSex_0N9BX8_onTQibXCgb9dCer9w34jn5Rws34hV_mc_R39Rg/viewform?usp=dialog",
 
   // Event date/time used for the countdown.
   // 12:30 PM India Standard Time on 6 Nov 2026.

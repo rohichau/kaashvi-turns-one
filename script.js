@@ -57,12 +57,16 @@
 
   const formUrl = normalizedFormUrl(rawUrl);
 
-  if (formUrl) {
-    pageFrame.src = formUrl;
+  function loadFormFrame(frame) {
+    if (frame && formUrl && !frame.src) {
+      frame.src = formUrl;
+    }
+  }
+
+  function openInlineForm() {
     formWrap.hidden = false;
-    setupNote.hidden = true;
-  } else {
-    formWrap.hidden = true;
+    loadFormFrame(pageFrame);
+    formWrap.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   openBtn?.addEventListener("click", () => {
@@ -73,11 +77,13 @@
       return;
     }
 
+    setupNote.hidden = true;
+
     if (dialog && typeof dialog.showModal === "function") {
-      dialogFrame.src = formUrl;
+      loadFormFrame(dialogFrame);
       dialog.showModal();
     } else {
-      window.open(formUrl, "_blank", "noopener,noreferrer");
+      openInlineForm();
     }
   });
 

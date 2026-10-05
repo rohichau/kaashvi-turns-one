@@ -1,6 +1,6 @@
 (() => {
   const cfg = window.KAASHVI_SITE_CONFIG || {};
-  const eventDate = new Date(cfg.eventDateTime || "2026-11-06T12:30:00+05:30");
+  const eventDate = new Date(cfg.eventDateTime || "2026-11-06T13:30:00+05:30");
 
   const el = (id) => document.getElementById(id);
 

@@ -15,6 +15,6 @@ window.KAASHVI_SITE_CONFIG = {
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbykyQ9zjJ4-yUgra_EbTOpPMKlCpFKID2mutxA7QmY-o6XCCeFOrj02ViaXHpjdrUUn/exec",
 
   // Event date/time used for the countdown.
-  // 12:30 PM India Standard Time on 6 Nov 2026.
-  eventDateTime: "2026-11-06T12:30:00+05:30"
+  // 1:30 PM India Standard Time on 6 Nov 2026.
+  eventDateTime: "2026-11-06T13:30:00+05:30"
 };
